@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_booking_order_ahmadyd_booking_order_ahmadyd,booking_order_ahmadyd.booking_order_ahmadyd,model_booking_order_ahmadyd_booking_order_ahmadyd,base.group_user,1,1,1,1
+access_service_team,access.service.team,model_service_team,,1,1,1,1
