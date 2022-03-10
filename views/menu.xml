@@ -12,8 +12,13 @@
                   parent="booking_main" sequence="2"
                   action="work_order_action"/>
 
-        <menuitem name="Service Team" id="service_team_main"
-                  parent="booking_main" sequence="2"
-                  action="service_team_action"/>
+        <!-- This Menu Item Must have a parent -->
+        <!-- omenuc (odoo menu category) untuk membuat category -->
+        <menuitem 
+        id="service_team_main"
+        name="Service Team" 
+        parent="booking_main" 
+        sequence="2"
+        action="service_team_action"/>
     </data>
 </odoo>

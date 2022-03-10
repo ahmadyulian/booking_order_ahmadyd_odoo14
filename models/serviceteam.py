@@ -7,11 +7,21 @@ import logging
 
 _logger = logging.getLogger(__name__)
 
-
 class ServiceTeam(models.Model):
     _name = 'service.team'
-    _description = 'Service Team'
+    _description = 'Deskripsi Service Team'
 
-    name = fields.Char(string='Team Name', readonly=False, default=False, required=True)
-    team_leader = fields.Many2one(comodel_name='res.users', readonly=False, string='Team Leader', required=True)
-    team_members = fields.Many2many(comodel_name='res.users', readonly=False, string='Team Members', required=False)
+    #ofchar
+    name = fields.Char(string='Nama Tim', readonly=False, default=False, required=True)
+
+    #ofm2o
+    team_leader = fields.Many2one(comodel_name='res.users', 
+    string='Ketua Tim', 
+    readonly=False, 
+    required=True)
+    
+    #ofm2m
+    team_member = fields.Many2many(comodel_name='res.users', 
+    string='Anggota Tim', 
+    readonly=False, 
+    required=False)
