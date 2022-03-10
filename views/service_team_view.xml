@@ -41,6 +41,7 @@
             <field name="name">Service Team</field>
             <field name="res_model">service.team</field>
             <field name="view_mode">tree,form</field>
+            
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Klik untuk menambahkan

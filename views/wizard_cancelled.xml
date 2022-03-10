@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
                 <form string="Reason for cancellation">
                     <group string="Reason for cancellation">
-                        <field name="note"/>
+                        <field name="notes"/>
                     </group>
                     <footer>
                         <button name="cancelled" string="Confirm" type="object" class="btn-primary"/>

@@ -9,16 +9,16 @@
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <tree string="Service Team">
-                    <field name="wo_number"/>
-                    <field name="bo_reference"/>
+                    <field name="work_order_number"/>
+                    <field name="booking_order_reference"/>
                     <field name="team"/>
                     <field name="team_leader"/>
-                    <field name="team_members"/>
+                    <field name="team_member"/>
                     <field name="planned_start"/>
                     <field name="planned_end"/>
                     <field name="date_start"/>
                     <field name="date_end"/>
-                    <field name="note"/>
+                    <field name="notes"/>
                     <field name="state"/>
                 </tree>
             </field>
@@ -42,11 +42,11 @@
                     <sheet>
                         <group cols="2" string="Work Order">
                             <group>
-                                <field name="wo_number"/>
-                                <field name="bo_reference"/>
+                                <field name="work_order_number"/>
+                                <field name="booking_order_reference"/>
                                 <field name="team"/>
                                 <field name="team_leader"/>
-                                <field name="team_members" widget="many2many_tags"/>
+                                <field name="team_member" widget="many2many_tags"/>
                             </group>
                             <group>
                                 <field name="planned_start"/>
@@ -56,7 +56,7 @@
                             </group>
                         </group>
                         <group>
-                            <field name="note"/>
+                            <field name="notes"/>
                         </group>
                     </sheet>
                 </form>
@@ -69,8 +69,8 @@
             <field name="model">work.order</field>
             <field name="arch" type="xml">
                 <kanban class="o_kanban_mobile">
-                    <field name="wo_number"/>
-                    <field name="bo_reference"/>
+                    <field name="work_order_number"/>
+                    <field name="booking_order_reference"/>
                     <field name="team"/>
                     <field name="team_leader"/>
                     <field name="planned_start"/>
@@ -83,7 +83,7 @@
                             <div t-attf-class="oe_kanban_card oe_kanban_global_click">
                                 <div class="row">
                                     <div class="col-xs-6">
-                                        <strong><span><t t-esc="wo_number"/></span></strong>
+                                        <strong><span><t t-esc="work_order_number"/></span></strong>
                                     </div>
                                     <div class="col-xs-6 pull-right text-right">
                                         <strong><field name="planned_start"/></strong>
@@ -91,7 +91,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-6 text-muted">
-                                        <span><t t-esc="bo_reference"/></span>
+                                        <span><t t-esc="booking_order_reference"/></span>
                                     </div>
                                     <div class="col-xs-6 pull-right text-right">
                                         <field name="planned_end"/>
@@ -133,8 +133,8 @@
             <field name="model">work.order</field>
             <field name="arch" type="xml">
                 <search string="Search Work Order">
-                    <field name="wo_number" string="Work Order"/>
-                    <field name="bo_reference"/>
+                    <field name="work_order_number" string="Work Order"/>
+                    <field name="booking_order_reference"/>
                     <field name="team"/>
                     <field name="team_leader"/>
                     <field name="planned_start"/>
@@ -143,9 +143,9 @@
                     <field name="date_end"/>
                     <field name="state"/>
                     <group expand="0" string="Group By">
-                        <filter string="BO Reference" domain="[]" context="{'group_by':'bo_reference'}"/>
+                        <filter string="BO Reference" domain="[]" context="{'group_by':'booking_order_reference'}"/>
                         <filter string="Team" domain="[]" context="{'group_by':'team'}"/>
-                        <filter string="Team Leader" domain="[]" context="{'group_by':'team_leader'}"/>
+                        <filter string="Ketua Tim" domain="[]" context="{'group_by':'team_leader'}"/>
                     </group>
                 </search>
             </field>
