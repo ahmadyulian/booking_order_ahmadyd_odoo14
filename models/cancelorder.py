@@ -1,7 +1,7 @@
-import time
+from odoo import models, fields, api, exceptions, _
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
-from odoo import models, fields, api, exceptions, _
+import time
 
 class CancelOrder(models.TransientModel):
     _name = "cancel.workorder"
