@@ -9,6 +9,7 @@
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <tree string="Service Team">
+                    <!-- Add your fields here -->
                     <field name="name"/>
                     <field name="team_leader"/>
                     <field name="team_member"/>
@@ -26,6 +27,7 @@
                 <form string="Service Team">
                     <sheet>
                         <group string="Service Team">
+                            <!-- Add your fields here -->
                             <field name="name"/>
                             <field name="team_leader"/>
                             <field name="team_member" widget="many2many_tags"/>

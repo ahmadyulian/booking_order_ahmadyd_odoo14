@@ -24,7 +24,7 @@
 
     # always loaded
     'data': [
-        'views/wizard_cancelled.xml',
+        'views/cancel_order_view.xml',
         'security/ir.model.access.csv',
         'views/work_order_view.xml',
         'views/booking_order_view.xml',

@@ -4,6 +4,7 @@ from dateutil.relativedelta import relativedelta
 from odoo import models, fields, api, exceptions, _
 from odoo.osv import osv
 import logging
+
 _logger = logging.getLogger(__name__)
 
 class WorkOrder(models.Model):
@@ -24,7 +25,7 @@ class WorkOrder(models.Model):
         [('pending', 'Pending'), ('in_progress', 'In Progress'), ('done', 'Done'), ('cancelled', 'Cancelled')],
         string='State', default='pending', track_visibility='onchange')
     
-    notes = fields.Text(string='notes')
+    notes = fields.Text(string='Notes')
 
     @api.model
     def create(self, vals):

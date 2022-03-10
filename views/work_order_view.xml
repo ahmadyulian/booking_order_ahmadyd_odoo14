@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-
-        <!-- Work Order tree View  -->
-        <record id="work_order_tree" model="ir.ui.view">
-            <field name="name">work.order.tree</field>
+        <!-- work.order tree view -->
+        <!-- otree (odoo tree) -->
+        <record id="work_order_view_tree" model="ir.ui.view">
+            <field name="name">work.order.view.tree</field>
             <field name="model">work.order</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <tree string="Service Team">
+                    <!-- Add your fields here -->
                     <field name="work_order_number"/>
                     <field name="booking_order_reference"/>
                     <field name="team"/>
@@ -24,9 +25,10 @@
             </field>
         </record>
 
-        <!-- Work Form Kanban View  -->
-        <record id="work_order_form" model="ir.ui.view">
-            <field name="name">work.order.form</field>
+        <!-- work.order form view -->
+        <!-- oform (odoo form) -->
+        <record id="work_order_view_form" model="ir.ui.view">
+            <field name="name">work.order.view.form</field>
             <field name="model">work.order</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
@@ -39,6 +41,7 @@
                                 type="action"/>
                         <field name="state" widget="statusbar" statusbar_visible="pending,in_progress,done,cancelled"/>
                     </header>
+                    
                     <sheet>
                         <group cols="2" string="Work Order">
                             <group>
@@ -48,6 +51,7 @@
                                 <field name="team_leader"/>
                                 <field name="team_member" widget="many2many_tags"/>
                             </group>
+                            
                             <group>
                                 <field name="planned_start"/>
                                 <field name="planned_end"/>
@@ -55,6 +59,7 @@
                                 <field name="date_end"/>
                             </group>
                         </group>
+                        
                         <group>
                             <field name="notes"/>
                         </group>
@@ -63,12 +68,13 @@
             </field>
         </record>
 
-        <!-- Work Order Kanban View  -->
-        <record model="ir.ui.view" id="view_work_order_kanban">
-            <field name="name">work.order.kanban</field>
+        <!-- work.order Kanban View  -->
+        <record id="work_order_view_kanban" model="ir.ui.view">
+            <field name="name">work.order.view.kanban</field>
             <field name="model">work.order</field>
             <field name="arch" type="xml">
                 <kanban class="o_kanban_mobile">
+                    <!-- Add your fields here -->
                     <field name="work_order_number"/>
                     <field name="booking_order_reference"/>
                     <field name="team"/>
@@ -78,6 +84,7 @@
                     <field name="date_start"/>
                     <field name="date_end"/>
                     <field name="state"/>
+                    
                     <templates>
                         <t t-name="kanban-box">
                             <div t-attf-class="oe_kanban_card oe_kanban_global_click">
@@ -89,6 +96,7 @@
                                         <strong><field name="planned_start"/></strong>
                                     </div>
                                 </div>
+                                
                                 <div class="row">
                                     <div class="col-xs-6 text-muted">
                                         <span><t t-esc="booking_order_reference"/></span>
@@ -97,6 +105,7 @@
                                         <field name="planned_end"/>
                                     </div>
                                 </div>
+                                
                                 <div class="row">
                                     <div class="col-xs-6 text-muted">
                                         <span><t t-esc="record.team.value"/></span>
@@ -105,6 +114,7 @@
                                         <field name="date_start"/>
                                     </div>
                                 </div>
+                                
                                 <div class="row">
                                     <div class="col-xs-6 text-muted">
                                         <span><t t-esc="record.team_leader.value"/></span>
@@ -113,6 +123,7 @@
                                         <field name="date_end"/>
                                     </div>
                                 </div>
+                                
                                 <div class="row">
                                     <div class="col-xs-6">
                                         <span>
@@ -128,40 +139,20 @@
             </field>
         </record>
 
-        <!--<record id="work_order_view_search" model="ir.ui.view">
-            <field name="name">work.order.search</field>
-            <field name="model">work.order</field>
-            <field name="arch" type="xml">
-                <search string="Search Work Order">
-                    <field name="work_order_number" string="Work Order"/>
-                    <field name="booking_order_reference"/>
-                    <field name="team"/>
-                    <field name="team_leader"/>
-                    <field name="planned_start"/>
-                    <field name="planned_end"/>
-                    <field name="date_start"/>
-                    <field name="date_end"/>
-                    <field name="state"/>
-                    <group expand="0" string="Group By">
-                        <filter string="BO Reference" domain="[]" context="{'group_by':'booking_order_reference'}"/>
-                        <filter string="Team" domain="[]" context="{'group_by':'team'}"/>
-                        <filter string="Ketua Tim" domain="[]" context="{'group_by':'team_leader'}"/>
-                    </group>
-                </search>
-            </field>
-        </record>-->
-
+        <!-- work.order action window -->
+        <!-- oact (odoo action) -->
         <record id="work_order_action" model="ir.actions.act_window">
             <field name="name">Working Order</field>
             <field name="res_model">work.order</field>
             <field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>
+            
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
-                    Click to add a master shift
+                    Klik untuk menambahkan
                 </p>
-                <p>klik tombol create untuk Working Order baru</p>
+
+                <p>Tekan tombol create untuk Working Order baru</p>
             </field>
         </record>
-
     </data>
 </odoo>
