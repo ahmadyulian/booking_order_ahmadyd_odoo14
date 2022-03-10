@@ -1,18 +1,19 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
-    <!-- omenur -->
-    <menuitem 
-    id="booking_order_menu_root" 
-    name="Booking" 
-    sequence="10"/>
+    <data>
+        <menuitem name="Booking" id="booking_main"
+                  parent="sale.sale_menu_root" sequence="0"/>
 
-    <!-- This Menu Item Must have a parent -->
-    <!-- omenuc -->
-    <menuitem 
-    id="service_team_order_menu_categ" 
-    name="Service Team" 
-    parent="booking_order_menu_root" 
-    action="service_team_action"
-    sequence="10"/>
+        <menuitem name="Booking Order" id="booking_order_main"
+                  parent="booking_main" sequence="1"
+                  action="booking_order_action"/>
+
+        <menuitem name="Work Order" id="work_order_main"
+                  parent="booking_main" sequence="2"
+                  action="work_order_action"/>
+
+        <menuitem name="Service Team" id="service_team_main"
+                  parent="booking_main" sequence="2"
+                  action="service_team_action"/>
+    </data>
 </odoo>
