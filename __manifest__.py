@@ -6,7 +6,7 @@
         Test Booking Order Odoo14""",
 
     'description': """
-        Long description of module's purpose
+        Test Booking Order Odoo14
     """,
 
     'author': "Ahmad Yulian Dinata",
@@ -27,6 +27,8 @@
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
+        'views/menu.xml',
+        'views/service_team_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
