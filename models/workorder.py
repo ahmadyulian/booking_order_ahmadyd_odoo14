@@ -16,12 +16,12 @@ class WorkOrder(models.Model):
     work_order_number = fields.Char(string='WO Number', required=True, readonly=True, copy=False, default=lambda self: _('New'))
     
     #ofm2o
-    booking_order_reference = fields.Many2one('sale.order', readonly=True)
-    team = fields.Many2one('service.team', required=True)
-    team_leader = fields.Many2one('res.users', string='Ketua Tim', required=True)
+    booking_order_reference = fields.Many2one(comodel_name='sale.order', readonly=True)
+    team = fields.Many2one(comodel_name='service.team', required=True)
+    team_leader = fields.Many2one(comodel_name='res.users', string='Ketua Tim', required=True)
 
     #ofm2m
-    team_member = fields.Many2many('res.users', string='Anggota Tim')
+    team_member = fields.Many2many(comodel_name='res.users', string='Anggota Tim')
 
     #ofdatetime
     planned_start = fields.Datetime(string="Planned Start", required=True)
