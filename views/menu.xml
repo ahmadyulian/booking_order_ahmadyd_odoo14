@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <menuitem 
-        id="booking_main"
+        id="booking_menu_main"
         name="Booking" 
         parent="sale.sale_menu_root" 
         sequence="0"/>
@@ -10,28 +10,29 @@
         <!-- This Menu Item Must have a parent -->
         <!-- omenuc (odoo menu category) untuk membuat category -->
         <menuitem 
-        id="booking_order_main"
+        id="booking_order_menu_categ"
         name="Booking Order" 
-        parent="booking_main" 
-        sequence="1"
+        parent="booking_menu_main" 
+        sequence="1" 
         action="booking_order_action"/>
+
 
         <!-- This Menu Item Must have a parent -->
         <!-- omenuc (odoo menu category) untuk membuat category -->
         <menuitem 
-        id="work_order_main"
+        id="work_order_menu_categ"
         name="Work Order" 
-        parent="booking_main" 
-        sequence="2"
+        parent="booking_menu_main" 
+        sequence="2" 
         action="work_order_action"/>
 
         <!-- This Menu Item Must have a parent -->
         <!-- omenuc (odoo menu category) untuk membuat category -->
         <menuitem 
-        id="service_team_main"
+        id="service_team_menu_categ"
         name="Service Team" 
-        parent="booking_main" 
-        sequence="2"
+        parent="booking_menu_main" 
+        sequence="3" 
         action="service_team_action"/>
     </data>
 </odoo>
