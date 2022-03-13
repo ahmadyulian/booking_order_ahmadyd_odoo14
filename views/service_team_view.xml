@@ -7,6 +7,7 @@
             <field name="name">service.team.view.tree</field>
             <field name="model">service.team</field>
             <field name="type">tree</field>
+            
             <field name="arch" type="xml">
                 <tree string="Service Team">
                     <!-- Add your fields here -->
@@ -23,6 +24,7 @@
             <field name="name">service.team.view.form</field>
             <field name="model">service.team</field>
             <field name="type">form</field>
+            
             <field name="arch" type="xml">
                 <form string="Service Team">
                     <sheet>
