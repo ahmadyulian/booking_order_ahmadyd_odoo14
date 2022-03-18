@@ -1,10 +1,10 @@
-from odoo import api, fields, models, exceptions, _
+from odoo import models, fields, api, exceptions, _
 
-class CancelOrder(models.TransientModel):
-    _name = "cancel.workorder"
 
-    #oftxt
-    note = fields.Text('note')
+class Cancelled(models.TransientModel):
+    _name = "cancelled.wo"
+
+    note = fields.Text('Note')
 
     def cancelled(self):
         cancel = self.env['work.order'].browse(self.env.context['active_id'])
