@@ -3,18 +3,18 @@ from odoo import api, fields, models, _
 class WorkOrder(models.Model):
     _name = 'work.order'
     _description = 'Deskripsi Work Order'
-    _rec_name = "wo_number"
+    _rec_name = "work_order_number"
 
     #ofchar #oofcompute
-    wo_number = fields.Char(string='WO Number', copy=False, default=lambda self: _('New'), readonly=True, required=True)
+    work_order_number = fields.Char(string='WO Number', copy=False, default=lambda self: _('New'), readonly=True, required=True)
     @api.model
     def create(self, vals):
-        if vals.get('wo_number', _('New')) == _('New'):
+        if vals.get('work_order_number', _('New')) == _('New'):
             if 'company_id' in vals:
-                vals['wo_number'] = self.env['ir.sequence'].with_context(force_company=vals['company_id']).next_by_code(
+                vals['work_order_number'] = self.env['ir.sequence'].with_context(force_company=vals['company_id']).next_by_code(
                     'work.order') or _('New')
             else:
-                vals['wo_number'] = self.env['ir.sequence'].next_by_code('work.order') or _('New')
+                vals['work_order_number'] = self.env['ir.sequence'].next_by_code('work.order') or _('New')
         return super(WorkOrder, self).create(vals)
 
     #ofm2o

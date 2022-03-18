@@ -10,7 +10,7 @@
                                 <table style="width: 100%; border: 1px solid black">
                                     <tr>
                                         <td style="width: 100%; font-size:20px; border: 1px solid black"
-                                            colspan="4"><span t-field="o.wo_number"/></td>
+                                            colspan="4"><span t-field="o.work_order_number"/></td>
                                     </tr>
                                     <tr>
                                         <td style="width: 25%; font-size:20px; border: 1px solid black">Team Name</td>

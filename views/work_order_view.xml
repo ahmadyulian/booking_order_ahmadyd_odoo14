@@ -20,7 +20,7 @@
             <field name="arch" type="xml">
                 <tree string="Service Team">
                     <!-- Add your fields here -->
-                    <field name="wo_number"/>
+                    <field name="work_order_number"/>
                     <field name="bo_reference"/>
                     <field name="team"/>
                     <field name="team_leader"/>
@@ -57,7 +57,7 @@
                     <sheet>
                         <group cols="2" string="Work Order">
                             <group>
-                                <field name="wo_number"/>
+                                <field name="work_order_number"/>
                                 <field name="bo_reference"/>
                                 <field name="team"/>
                                 <field name="team_leader"/>
@@ -89,7 +89,7 @@
             <field name="arch" type="xml">
                 <kanban class="o_kanban_mobile">
                     <!-- Add your fields here -->
-                    <field name="wo_number"/>
+                    <field name="work_order_number"/>
                     <field name="bo_reference"/>
                     <field name="team"/>
                     <field name="team_leader"/>
@@ -103,7 +103,7 @@
                             <div t-attf-class="oe_kanban_card oe_kanban_global_click">
                                 <div class="row">
                                     <div class="col-xs-6">
-                                        <strong><span><t t-esc="wo_number"/></span></strong>
+                                        <strong><span><t t-esc="work_order_number"/></span></strong>
                                     </div>
                                     <div class="col-xs-6 pull-right text-right">
                                         <strong><field name="planned_start"/></strong>
@@ -161,7 +161,7 @@
             <field name="arch" type="xml">
                 <search string="Search Work Order">
                     <!-- Add your fields here -->
-                    <field name="wo_number" string="Work Order"/>
+                    <field name="work_order_number" string="Work Order"/>
                     <field name="bo_reference"/>
                     <field name="team"/>
                     <field name="team_leader"/>
