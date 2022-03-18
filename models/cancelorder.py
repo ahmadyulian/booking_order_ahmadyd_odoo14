@@ -1,11 +1,4 @@
 from odoo import api, fields, models, exceptions, _
-from odoo.osv import osv
-from datetime import datetime, timedelta
-from dateutil.relativedelta import relativedelta
-import time
-import logging
-
-_logger = logging.getLogger(__name__)
 
 class CancelOrder(models.TransientModel):
     _name = "cancel.workorder"
