@@ -58,9 +58,9 @@
         </record>
 
         <menuitem 
-            id="booking_order_main"
+            id="booking_order_menu_categ"
             name="Booking Order"
-            parent="booking_main" 
+            parent="booking_menu_main" 
             sequence="1" 
             action="booking_order_action"/>
     </data>
