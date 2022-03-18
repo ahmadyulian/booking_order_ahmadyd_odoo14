@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <!-- sale.order form view -->
+        <!-- oform (odoo form) -->
         <record id="booking_order_view_form" model="ir.ui.view">
             <field name="name">booking.order.form</field>
             <field name="model">sale.order</field>
@@ -14,8 +16,8 @@
                 <xpath expr="//button[@name='action_view_invoice']" position="after">
                     <button type="action" name="%(action_view_wo)d"
                             class="oe_stat_button"
-                            icon="fa-book" attrs="{'invisible': [('work_order_count', '=', 0)]}">
-                        <field name="work_order_count" widget="statinfo" string="Work Order"/>
+                            icon="fa-book" attrs="{'invisible': [('wo_count', '=', 0)]}">
+                        <field name="wo_count" widget="statinfo" string="Work Order"/>
                     </button>
                 </xpath>
                 
@@ -23,19 +25,21 @@
                     <field name="is_booking_order" invisible="1"/>
                     <field name="team" required="1" attrs="{'invisible': [('is_booking_order', '=', False)]}"/>
                     <field name="team_leader" required="1" attrs="{'invisible': [('is_booking_order', '=', False)]}"/>
-                    <field name="team_member" widget="many2many_tags" required="1"
+                    <field name="team_members" widget="many2many_tags" required="1"
                            attrs="{'invisible': [('is_booking_order', '=', False)]}"/>
                 </field>
                 
                 <field name="payment_term_id" position="after">
-                    <field name="bo_start" required="1" attrs="{'invisible': [('is_booking_order', '=', False)]}"/>
-                    <field name="bo_end" required="1" attrs="{'invisible': [('is_booking_order', '=', False)]}"/>
+                    <field name="booking_start" required="1" attrs="{'invisible': [('is_booking_order', '=', False)]}"/>
+                    <field name="booking_end" required="1" attrs="{'invisible': [('is_booking_order', '=', False)]}"/>
                 </field>
             </field>
         </record>
 
+        <!-- sale.order action window -->
+        <!-- oact (odoo action) -->
         <record id="booking_order_action" model="ir.actions.act_window">
-            <field name="name">Booking Order Action</field>
+            <field name="name">Booking Order</field>
             <field name="res_model">sale.order</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[('is_booking_order', '=', 1)]</field>

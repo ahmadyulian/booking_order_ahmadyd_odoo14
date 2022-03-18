@@ -19,7 +19,7 @@
                     <field name="bo_reference"/>
                     <field name="team"/>
                     <field name="team_leader"/>
-                    <field name="team_member"/>
+                    <field name="team_members"/>
                     <field name="planned_start"/>
                     <field name="planned_end"/>
                     <field name="date_start"/>
@@ -51,7 +51,7 @@
                                 <field name="bo_reference"/>
                                 <field name="team"/>
                                 <field name="team_leader"/>
-                                <field name="team_member" widget="many2many_tags"/>
+                                <field name="team_members" widget="many2many_tags"/>
                             </group>
                             <group>
                                 <field name="planned_start"/>
@@ -149,7 +149,7 @@
                     <group expand="0" string="Group By">
                         <filter string="BO Reference" domain="[]" context="{'group_by':'bo_reference'}" name="bo_reference"/>
                         <filter string="Team" domain="[]" context="{'group_by':'team'}" name="team"/>
-                        <filter string="Ketua Tim" domain="[]" context="{'group_by':'team_leader'}" name="team_leader"/>
+                        <filter string="Team Leader" domain="[]" context="{'group_by':'team_leader'}" name="team_leader"/>
                     </group>
                 </search>
             </field>

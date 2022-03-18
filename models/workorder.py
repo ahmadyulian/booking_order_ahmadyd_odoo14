@@ -20,11 +20,11 @@ class WorkOrder(models.Model):
         required=True)
     team_leader = fields.Many2one(
         comodel_name='res.users',
-        string='Ketua Tim',
+        string='Team Leader',
         required=True)
-    team_member = fields.Many2many(
+    team_members = fields.Many2many(
         comodel_name='res.users',
-        string='Anggota Member')
+        string='Team Members')
     planned_start = fields.Datetime(
         string="Planned Start",
         required=True)

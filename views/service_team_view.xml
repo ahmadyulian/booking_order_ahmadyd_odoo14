@@ -10,7 +10,7 @@
                 <tree string="Service Team">
                     <field name="name"/>
                     <field name="team_leader"/>
-                    <field name="team_member"/>
+                    <field name="team_members"/>
                 </tree>
             </field>
         </record>
@@ -26,7 +26,7 @@
                         <group string="Service Team">
                             <field name="name"/>
                             <field name="team_leader"/>
-                            <field name="team_member" widget="many2many_tags"/>
+                            <field name="team_members" widget="many2many_tags"/>
                         </group>
                     </sheet>
                 </form>

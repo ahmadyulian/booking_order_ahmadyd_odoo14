@@ -3,8 +3,8 @@
     <data>
 
         <record model="ir.ui.view" id="cancelled_form">
-            <field name="name">cancelled.wo.form</field>
-            <field name="model">cancelled.wo</field>
+            <field name="name">cancel.workorder.form</field>
+            <field name="model">cancel.workorder</field>
             <field name="arch" type="xml">
                 <form string="Reason for cancellation">
                     <group string="Reason for cancellation">
@@ -19,7 +19,7 @@
         </record>
 
         <act_window name="cancelled Work Order" id="action_cancel"
-                    res_model="cancelled.wo"
+                    res_model="cancel.workorder"
                     view_mode="form" target="new"/>
 
     </data>

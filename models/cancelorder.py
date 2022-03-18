@@ -1,8 +1,8 @@
 from odoo import models, fields, api, exceptions, _
 
 
-class Cancelled(models.TransientModel):
-    _name = "cancelled.wo"
+class CancelWorkOrder(models.TransientModel):
+    _name = "cancel.workorder"
 
     note = fields.Text('Note')
 
