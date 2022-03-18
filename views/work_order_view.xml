@@ -195,5 +195,12 @@
                 <p>Tekan tombol create untuk Working Order baru</p>
             </field>
         </record>
+
+        <menuitem 
+            id="work_order_main"
+            name="Work Order" 
+            parent="booking_main" 
+            sequence="2" 
+            action="work_order_action"/>
     </data>
 </odoo>

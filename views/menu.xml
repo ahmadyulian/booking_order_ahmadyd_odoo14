@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <menuitem name="Booking" id="booking_main"
-                  parent="sale.sale_menu_root" sequence="0"/>
-
-        <menuitem name="Work Order" id="work_order_main"
-                  parent="booking_main" sequence="2" action="work_order_action"/>
+        <menuitem 
+            id="booking_main"
+            name="Booking"
+            parent="sale.sale_menu_root" 
+            sequence="0"/>
     </data>
 </odoo>
