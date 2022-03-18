@@ -1,9 +1,9 @@
-from odoo import models, fields, api, exceptions, _
-
+from odoo import api, fields, models, exceptions, _
 
 class CancelWorkOrder(models.TransientModel):
-    _name = "cancel.workorder"
+    _name = "cancel.order"
 
+    #oftxt
     note = fields.Text('Note')
 
     def cancelled(self):

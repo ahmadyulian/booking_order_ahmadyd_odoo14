@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <template id="report_work_order">
-            <t t-name="report_work_order">
+        <template id="report_wo">
+            <t t-name="report_wo">
                 <t t-call="web.html_container">
                     <t t-foreach="docs" t-as="o">
                         <div class="page">
@@ -16,12 +16,12 @@
                                         <td style="width: 25%; font-size:20px; border: 1px solid black">Team Name</td>
                                         <td style="width: 25%;font-size:20px; border: 1px solid black"><span
                                                 t-field="o.bo_reference.team.name"/></td>
-                                        <td style="width: 25%;font-size:20px; border: 1px solid black">Customer</td>
+                                        <td style="width: 25%;font-size:20px; border: 1px solid black">Customers</td>
                                         <td style="width: 25%;font-size:20px; border: 1px solid black"><span
                                                 t-field="o.bo_reference.partner_id.name"/></td>
                                     </tr>
                                     <tr>
-                                        <td style="font-size:20px; border: 1px solid black">Booking Order Ref</td>
+                                        <td style="font-size:20px; border: 1px solid black">Booking Order Reference</td>
                                         <td style="font-size:20px; border: 1px solid black"><span
                                                 t-field="o.bo_reference.name"/></td>
                                         <td style="font-size:20px; border: 1px solid black">Date</td>
