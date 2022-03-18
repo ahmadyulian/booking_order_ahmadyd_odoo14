@@ -56,7 +56,7 @@
         <menuitem 
             id="service_team_menu_categ"
             name="Service Team"
-            parent="booking_menu_main" 
+            parent="booking_main" 
             sequence="3" 
             action="service_team_action"/>
     </data>

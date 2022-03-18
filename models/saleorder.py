@@ -23,11 +23,11 @@ class SaleOrder(models.Model):
         string='Work Order',
         compute='_compute_wo_count')
     def _compute_wo_count(self):
-        wo_data = self.env['work.order'].sudo().read_group([('bo_reference', 'in', self.ids)], ['bo_reference'],
-                                                                   ['bo_reference'])
+        wo_data = self.env['work.order'].sudo().read_group([('booking_order_reference', 'in', self.ids)], ['booking_order_reference'],
+                                                                   ['booking_order_reference'])
         
         result = {
-            data['bo_reference'][0]: data['bo_reference_count'] for data in wo_data
+            data['booking_order_reference'][0]: data['booking_order_reference_count'] for data in wo_data
         }
 
         for wo in self:
@@ -86,7 +86,7 @@ class SaleOrder(models.Model):
         wo_obj = self.env['work.order']
         
         for order in self:
-            wo_obj.create([{'bo_reference': order.id,
+            wo_obj.create([{'booking_order_reference': order.id,
                             'team': order.team.id,
                             'team_leader': order.team_leader.id,
                             'team_members': order.team_members.ids,

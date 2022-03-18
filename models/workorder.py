@@ -18,7 +18,7 @@ class WorkOrder(models.Model):
         return super(WorkOrder, self).create(vals)
 
     #ofm2o
-    bo_reference = fields.Many2one(comodel_name='sale.order', readonly=True)
+    booking_order_reference = fields.Many2one(comodel_name='sale.order', readonly=True)
     team = fields.Many2one(comodel_name='service.team', required=True)
     team_leader = fields.Many2one(comodel_name='res.users', string='Team Leader', required=True)
 
