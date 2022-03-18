@@ -1,11 +1,5 @@
-from odoo import api, fields, models, exceptions, _
-from odoo.osv import osv
-from datetime import datetime, timedelta
-from dateutil.relativedelta import relativedelta
-import time
-import logging
-
-_logger = logging.getLogger(__name__)
+from odoo import api, fields, models, _
+from odoo.exceptions import ValidationError
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
@@ -30,7 +24,7 @@ class SaleOrder(models.Model):
         work_order_data = self.env['work.order'].sudo().read_group([('booking_order_reference', 'in', self.ids)], ['booking_order_reference'],
                                                            ['booking_order_reference'])
         
-        result = dict((data['booking_order_reference'][0], data['booking_order_reference_count']) for data in work_order_data)
+        result = {data['booking_order_reference'][0]: data['booking_order_reference_count'] for data in work_order_data}
         
         for wo in self:
             wo.work_order_count = result.get(wo.id, 0)
@@ -42,49 +36,52 @@ class SaleOrder(models.Model):
         team_member = []
         
         for team in search:
-            for members in team.team_member:
-                team_member.append(members.id)
-            
+            team_member.extend(member.id for member in team.team_member)
             self.team_leader = team.team_leader.id
             self.team_member = team_member
 
     def action_check(self):
         for check in self:
             wo = self.env['work.order'].search(
-                ['|', '|', '|', ('team_leader', 'in', [g.id for g in self.team_member]),
+                ['|', '|', '|',
+                 ('team_leader', 'in', [g.id for g in self.team_member]),
                  ('team_member', 'in', [self.team_leader.id]),
                  ('team_leader', '=', self.team_leader.id),
                  ('team_member', 'in', [g.id for g in self.team_member]),
-                 ('state', '!=', 'cancelled'), ('planned_start', '<=', self.bo_end),
-                 ('planned_end', '>=', self.bo_start)], limit=1)
+                 ('state', '!=', 'cancelled'),
+                 ('planned_start', '<=', self.booking_end),
+                 ('planned_end', '>=', self.booking_start)], limit=1)
+            
             if wo:
-                raise osv.except_osv(_('Warning!'), _('Team already has work order during that period on SOXX'))
+                raise ValidationError('Team already has work order during that period on SOXX')
             else:
-                raise osv.except_osv(_('Warning!'), _('Team is available for booking'))
+                raise ValidationError('Team is available for booking')
 
     def action_confirm(self):
         res = super(SaleOrder, self).action_confirm()
         for order in self:
-            wo = self.env['work.order'].search(['|', '|', '|', ('team_leader', 'in', [g.id for g in self.team_member]),
-                                                ('team_member', 'in', [self.team_leader.id]),
-                                                ('team_leader', '=', self.team_leader.id),
-                                                ('team_member', 'in', [g.id for g in self.team_member]),
-                                                ('state', '!=', 'cancelled'), ('planned_start', '<=', self.bo_end),
-                                                ('planned_end', '>=', self.bo_start)], limit=1)
+            wo = self.env['work.order'].search(
+                ['|', '|', '|',
+                 ('team_leader', 'in', [g.id for g in self.team_member]),
+                 ('team_member', 'in', [self.team_leader.id]),
+                 ('team_leader', '=', self.team_leader.id),
+                 ('team_member', 'in', [g.id for g in self.team_member]),
+                 ('state', '!=', 'cancelled'),
+                 ('planned_start', '<=', self.booking_end),
+                 ('planned_end', '>=', self.booking_start)], limit=1)
             if wo:
-                raise osv.except_osv(_('Warning!'),
-                                     _('Team is not available during this period, already booked on SOXX. Please book '
-                                       'on another date.'))
+                raise ValidationError('Team is not available during this period, already booked on '
+                                      'SOXX. Please book on another date.')
             order.action_work_order_create()
         
         return res
 
-    def action_work_order_create(self, grouped=False, final=False):
-        work_order_object = self.env['work.order']
+   def action_work_order_create(self):
+        work_order_object = self.env['booking.work_order']
         for order in self:
-            work_order = work_order_object.create({'booking_order_reference': order.id,
-                                        'team': order.team.id,
-                                        'team_leader': order.team_leader.id,
-                                        'team_member': [(4, order.team_member.ids)],
-                                        'planned_start': order.bo_start,
-                                        'planned_end': order.bo_end, })
+            wo_obj.create([{'booking_order_reference': order.id,
+                            'team': order.team.id,
+                            'team_leader': order.team_leader.id,
+                            'team_member': order.team_member.ids,
+                            'planned_start': order.booking_start,
+                            'planned_end': order.booking_end}])
