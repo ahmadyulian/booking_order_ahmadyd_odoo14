@@ -1,11 +1,4 @@
-from odoo import api, fields, models, exceptions, _
-from odoo.osv import osv
-from datetime import datetime, timedelta
-from dateutil.relativedelta import relativedelta
-import time
-import logging
-
-_logger = logging.getLogger(__name__)
+from odoo import api, fields, models, _
 
 class WorkOrder(models.Model):
     _name = 'work.order'
@@ -45,9 +38,6 @@ class WorkOrder(models.Model):
                 vals['work_order_number'] = self.env['ir.sequence'].next_by_code('work.order') or _('New')
         
         result = super(WorkOrder, self).create(vals)
-        
-        return result
-
 
     def start_work(self):
         return self.write({'state': 'in_progress', 'date_start': str(datetime.now())})

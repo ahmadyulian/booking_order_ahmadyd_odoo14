@@ -148,6 +148,29 @@
             </field>
         </record>
 
+        <record id="work_order_view_search" model="ir.ui.view">
+            <field name="name">work.order.search</field>
+            <field name="model">work.order</field>
+            <field name="arch" type="xml">
+                <search string="Search Work Order">
+                    <field name="work_order_number" string="Work Order"/>
+                    <field name="booking_order_reference"/>
+                    <field name="team"/>
+                    <field name="team_leader"/>
+                    <field name="planned_start"/>
+                    <field name="planned_end"/>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                    <field name="state"/>
+                    <group expand="0" string="Group By">
+                        <filter string="BO Reference" domain="[]" context="{'group_by':'booking_order_reference'}" name="booking_order_reference"/>
+                        <filter string="Team" domain="[]" context="{'group_by':'team'}" name="team"/>
+                        <filter string="Team Leader" domain="[]" context="{'group_by':'team_leader'}" name="team_leader"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
         <!-- work.order action window -->
         <!-- oact (odoo action) -->
         <record id="work_order_action" model="ir.actions.act_window">
