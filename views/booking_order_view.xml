@@ -56,5 +56,12 @@
                 <p>Tekan tombol create untuk Booking Order baru</p>
             </field>
         </record>
+
+        <menuitem 
+            id="booking_order_main"
+            name="Booking Order"
+            parent="booking_main" 
+            sequence="1" 
+            action="booking_order_action"/>
     </data>
 </odoo>
