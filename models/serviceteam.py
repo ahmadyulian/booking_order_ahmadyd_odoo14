@@ -6,12 +6,11 @@ class ServiceTeam(models.Model):
 
     #ofchar
     name = fields.Char(
-    string='Nama Tim', 
-    required=True)
+    string='Nama Tim', required=True)
 
     #ofm2o
     team_leader = fields.Many2one(comodel_name='res.users', 
-    string='Ketua Tim'
+    string='Ketua Tim',
     required=True)
     
     #ofm2m

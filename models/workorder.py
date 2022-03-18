@@ -40,10 +40,10 @@ class WorkOrder(models.Model):
         result = super(WorkOrder, self).create(vals)
 
     def start_work(self):
-        return self.write({'state': 'in_progress', 'date_start': str(datetime.now())})
+        return self.write({'state': 'in_progress', 'date_start': fields.Datetime.now()})
 
     def end_work(self):
-        return self.write({'state': 'done', 'date_end': str(datetime.now())})
+        return self.write({'state': 'done', 'date_end': fields.Datetime.now()})
 
     def reset(self):
         return self.write({'state': 'pending', 'date_start': ''})

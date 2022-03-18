@@ -76,12 +76,12 @@ class SaleOrder(models.Model):
         
         return res
 
-   def action_work_order_create(self):
-        work_order_object = self.env['booking.work_order']
-        for order in self:
-            wo_obj.create([{'booking_order_reference': order.id,
-                            'team': order.team.id,
-                            'team_leader': order.team_leader.id,
-                            'team_member': order.team_member.ids,
-                            'planned_start': order.booking_start,
-                            'planned_end': order.booking_end}])
+    def action_work_order_create(self):
+            work_order_object = self.env['work.order']
+            for order in self:
+                work_order_object.create([{'booking_order_reference': order.id,
+                                'team': order.team.id,
+                                'team_leader': order.team_leader.id,
+                                'team_member': order.team_member.ids,
+                                'planned_start': order.booking_start,
+                                'planned_end': order.booking_end}])
