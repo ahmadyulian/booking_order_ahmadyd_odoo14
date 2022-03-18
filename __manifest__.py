@@ -20,7 +20,7 @@
     'application':True,
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'sale', 'sale_management'],
+    'depends': ['base', 'sale'],
 
     # always loaded
     'data': [

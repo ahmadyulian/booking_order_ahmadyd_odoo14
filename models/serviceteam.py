@@ -5,9 +5,7 @@ class ServiceTeam(models.Model):
     _description = 'Deskripsi Service Team'
 
     #ofchar
-    name = fields.Char(
-        string='Nama Tim',
-        required=True)
+    name = fields.Char(string='Nama Tim', required=True)
 
     #ofm2o
     team_leader = fields.Many2one(comodel_name='res.users',
