@@ -39,7 +39,7 @@
         <!-- sale.order action window -->
         <!-- oact (odoo action) -->
         <record id="booking_order_action" model="ir.actions.act_window">
-            <field name="name">Booking Order</field>
+            <field name="name">Booking Order Action</field>
             <field name="res_model">sale.order</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[('is_booking_order', '=', 1)]</field>
