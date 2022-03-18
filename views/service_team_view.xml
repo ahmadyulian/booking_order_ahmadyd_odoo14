@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        
         <!-- service.team tree view -->
         <!-- otree (odoo tree) -->
         <record id="service_team_view_tree" model="ir.ui.view">
@@ -53,5 +52,12 @@
                 <p>Tekan tombol create untuk Service Team baru</p>
             </field>
         </record>
+
+        <menuitem 
+            id="service_team_main"
+            name="Service Team"
+            parent="booking_main" 
+            sequence="3" 
+            action="service_team_action"/>
     </data>
 </odoo>
